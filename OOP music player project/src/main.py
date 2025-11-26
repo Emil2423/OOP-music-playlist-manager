@@ -18,6 +18,7 @@ from models.playlist import Playlist
 from repositories.song_repository import SongRepository
 from repositories.user_repository import UserRepository
 from repositories.playlist_repository import PlaylistRepository
+from services.track_factory import TrackFactory
 
 # Initialize logging
 setup_logging()
@@ -128,13 +129,8 @@ def create_song():
             print("❌ Duration must be a number")
             return
         
-        # Create Song using Student A's model
-        song = Song(
-            title=title,
-            artist=artist,
-            genre=genre,
-            duration=duration
-        )
+        # Create Song using TrackFactory (Factory Pattern)
+        song = TrackFactory.create_song(title, duration, artist, genre)
         
         # Persist using Student B's repository
         song_id = song_repo.create(song)

@@ -16,6 +16,7 @@ from repositories.playlist_repository import PlaylistRepository
 from repositories.song_repository import SongRepository
 from repositories.user_repository import UserRepository
 from repositories.base_repository import BaseRepository
+from services.track_factory import TrackFactory
 
 
 class TestPlaylistRepository(unittest.TestCase):
@@ -167,7 +168,7 @@ class TestPlaylistRepository(unittest.TestCase):
         user = User(username="user5", email="user5@example.com")
         user_id = self.user_repo.create(user)
         
-        song = Song(title="Song", artist="Artist", genre="Genre", duration=180)
+        song = TrackFactory.create_song("Song", 180, "Artist", "Genre")
         song_id = self.song_repo.create(song)
         
         playlist = Playlist(name="Playlist", owner_id=user_id)
@@ -185,11 +186,11 @@ class TestPlaylistRepository(unittest.TestCase):
         # Create songs
         song_ids = []
         for i in range(3):
-            song = Song(
-                title=f"Song {i}",
-                artist=f"Artist {i}",
-                genre="Genre",
-                duration=180 + i * 10
+            song = TrackFactory.create_song(
+                f"Song {i}",
+                180 + i * 10,
+                f"Artist {i}",
+                "Genre"
             )
             song_id = self.song_repo.create(song)
             song_ids.append(song_id)
@@ -226,8 +227,8 @@ class TestPlaylistRepository(unittest.TestCase):
         user_id = self.user_repo.create(user)
         
         # Create songs
-        song1 = Song(title="Song 1", artist="Artist 1", genre="Genre", duration=180)
-        song2 = Song(title="Song 2", artist="Artist 2", genre="Genre", duration=200)
+        song1 = TrackFactory.create_song("Song 1", 180, "Artist 1", "Genre")
+        song2 = TrackFactory.create_song("Song 2", 200, "Artist 2", "Genre")
         song1_id = self.song_repo.create(song1)
         song2_id = self.song_repo.create(song2)
         

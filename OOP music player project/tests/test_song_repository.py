@@ -12,6 +12,7 @@ from database.schema import initialize_database
 from models.song import Song
 from repositories.song_repository import SongRepository
 from repositories.base_repository import BaseRepository
+from services.track_factory import TrackFactory
 
 
 class TestSongRepository(unittest.TestCase):
@@ -60,12 +61,7 @@ class TestSongRepository(unittest.TestCase):
     
     def test_create_song_returns_id(self):
         """Test that create_song persists and returns ID."""
-        song = Song(
-            title="Imagine",
-            artist="John Lennon",
-            genre="Rock",
-            duration=183
-        )
+        song = TrackFactory.create_song("Imagine", 183, "John Lennon", "Rock")
         
         song_id = self.repo.create(song)
         
@@ -79,12 +75,7 @@ class TestSongRepository(unittest.TestCase):
     
     def test_read_by_id_returns_song(self):
         """Test that read_by_id retrieves created song."""
-        original_song = Song(
-            title="Test Song",
-            artist="Test Artist",
-            genre="Test Genre",
-            duration=100
-        )
+        original_song = TrackFactory.create_song("Test Song", 100, "Test Artist", "Test Genre")
         
         song_id = self.repo.create(original_song)
         retrieved_song = self.repo.read_by_id(song_id)
@@ -109,7 +100,7 @@ class TestSongRepository(unittest.TestCase):
         ]
         
         for title, artist, genre, duration in songs_data:
-            song = Song(title=title, artist=artist, genre=genre, duration=duration)
+            song = TrackFactory.create_song(title, duration, artist, genre)
             self.repo.create(song)
         
         all_songs = self.repo.read_all()
@@ -123,7 +114,7 @@ class TestSongRepository(unittest.TestCase):
     
     def test_exists_returns_true_for_existing_song(self):
         """Test that exists returns True for created song."""
-        song = Song(title="Test", artist="Test", genre="Test", duration=100)
+        song = TrackFactory.create_song("Test", 100, "Test", "Test")
         song_id = self.repo.create(song)
         
         self.assertTrue(self.repo.exists(song_id))
@@ -141,7 +132,7 @@ class TestSongRepository(unittest.TestCase):
         ]
         
         for title, artist, genre, duration in songs_data:
-            song = Song(title=title, artist=artist, genre=genre, duration=duration)
+            song = TrackFactory.create_song(title, duration, artist, genre)
             self.repo.create(song)
         
         beatles_songs = self.repo.read_by_artist("Beatles")
@@ -164,7 +155,7 @@ class TestSongRepository(unittest.TestCase):
         ]
         
         for title, artist, genre, duration in songs_data:
-            song = Song(title=title, artist=artist, genre=genre, duration=duration)
+            song = TrackFactory.create_song(title, duration, artist, genre)
             self.repo.create(song)
         
         rock_songs = self.repo.read_by_genre("Rock")
@@ -182,11 +173,11 @@ class TestSongRepository(unittest.TestCase):
         """Test that each created song has a unique ID."""
         songs = []
         for i in range(5):
-            song = Song(
-                title=f"Song {i}",
-                artist=f"Artist {i}",
-                genre=f"Genre {i}",
-                duration=100 + i * 10
+            song = TrackFactory.create_song(
+                f"Song {i}",
+                100 + i * 10,
+                f"Artist {i}",
+                f"Genre {i}"
             )
             song_id = self.repo.create(song)
             songs.append(song_id)
@@ -196,12 +187,7 @@ class TestSongRepository(unittest.TestCase):
     
     def test_song_attributes_preserved_after_round_trip(self):
         """Test that song attributes are preserved through database round-trip."""
-        original = Song(
-            title="Test Title",
-            artist="Test Artist",
-            genre="Test Genre",
-            duration=250
-        )
+        original = TrackFactory.create_song("Test Title", 250, "Test Artist", "Test Genre")
         
         song_id = self.repo.create(original)
         retrieved = self.repo.read_by_id(song_id)
@@ -213,11 +199,11 @@ class TestSongRepository(unittest.TestCase):
     
     def test_special_characters_in_song_title(self):
         """Test that special characters in titles are handled correctly."""
-        song = Song(
-            title="Bohemian Rhapsody (Rock Opera) - Remastered [2009]",
-            artist="Queen & Freddie Mercury's 'True' Collection",
-            genre="Rock/Opera",
-            duration=354
+        song = TrackFactory.create_song(
+            "Bohemian Rhapsody (Rock Opera) - Remastered [2009]",
+            354,
+            "Queen & Freddie Mercury's 'True' Collection",
+            "Rock/Opera"
         )
         
         song_id = self.repo.create(song)
