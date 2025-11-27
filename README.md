@@ -1,6 +1,6 @@
 # Single Source of Truth
 
- * https://bit.ly/49DhKvD
+ * https://bit.ly/49DhKvD](https://www.youtube.com/watch?v=JFO_HLa0UMc
 
 # OOP Music Playlist Manager
 
