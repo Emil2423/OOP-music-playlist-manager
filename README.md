@@ -1,3 +1,7 @@
+# Single Source of Truth
+
+ * https://bit.ly/49DhKvD
+
 # OOP Music Playlist Manager
 
 A command-line interface (CLI) application for managing music playlists, songs, and users. This project demonstrates Object-Oriented Programming (OOP) principles, database interaction using SQLite, and repository patterns.
