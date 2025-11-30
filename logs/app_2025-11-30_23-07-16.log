@@ -1,0 +1,39 @@
+2025-11-30 23:07:16 - root - INFO - Logging initialized - Log file: C:\Users\user\Documents\OOP-music-playlist-manager\logs\app_2025-11-30_23-07-16.log
+2025-11-30 23:07:16 - __main__ - INFO - ============================================================
+2025-11-30 23:07:16 - __main__ - INFO - Initializing Music Playlist Manager Application
+2025-11-30 23:07:16 - __main__ - INFO - ============================================================
+2025-11-30 23:07:16 - database.connection - DEBUG - Creating new DatabaseConnection instance with db_path: c:\Users\user\Documents\OOP-music-playlist-manager\music_playlist.db
+2025-11-30 23:07:16 - database.connection - INFO - Database connection established to c:\Users\user\Documents\OOP-music-playlist-manager\music_playlist.db
+2025-11-30 23:07:16 - __main__ - INFO - Database connection established
+2025-11-30 23:07:16 - __main__ - INFO - Application initialization completed successfully
+2025-11-30 23:07:16 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-30 23:07:16 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-30 23:07:16 - services.user_service - DEBUG - UserService initialized
+2025-11-30 23:07:16 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-30 23:07:16 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-30 23:07:16 - services.song_service - DEBUG - SongService initialized
+2025-11-30 23:07:16 - repositories.base_repository - DEBUG - Initialized PlaylistRepository for entity: Playlist
+2025-11-30 23:07:16 - repositories.playlist_repository - DEBUG - Initialized PlaylistRepository
+2025-11-30 23:07:16 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-30 23:07:16 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-30 23:07:16 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-30 23:07:16 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-30 23:07:16 - services.playlist_service - DEBUG - PlaylistService initialized
+2025-11-30 23:07:16 - controllers.cli_controller - INFO - CLIController initialized
+2025-11-30 23:07:21 - controllers.cli_controller - INFO - User selected menu option: 12
+2025-11-30 23:07:21 - services.playlist_service - DEBUG - Getting all playlists
+2025-11-30 23:07:21 - database.connection - DEBUG - Query executed: SELECT id, name, owner_id FROM playlists ORDER BY created_at DESC with params: ()
+2025-11-30 23:07:21 - repositories.playlist_repository - INFO - Retrieved 1 playlists from database
+2025-11-30 23:07:21 - services.user_service - DEBUG - Getting user by ID: a0d4a09d-d171-40a9-8efb-821dd13a246c
+2025-11-30 23:07:21 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users WHERE id = ? with params: ('a0d4a09d-d171-40a9-8efb-821dd13a246c',)
+2025-11-30 23:07:21 - repositories.base_repository - INFO - READ operation on User (ID: a0d4a09d-d171-40a9-8efb-821dd13a246c)
+2025-11-30 23:07:21 - services.playlist_service - DEBUG - Getting songs for playlist: 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-30 23:07:21 - services.playlist_service - DEBUG - Getting playlist by ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-30 23:07:21 - database.connection - DEBUG - Query executed: SELECT id, name, owner_id FROM playlists WHERE id = ? with params: ('35f4bb2a-7d99-4d68-9a86-d2042e10161c',)
+2025-11-30 23:07:21 - repositories.base_repository - INFO - READ operation on Playlist (ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c)
+2025-11-30 23:07:21 - database.connection - DEBUG - Query executed: SELECT song_id FROM playlist_songs WHERE playlist_id = ? ORDER BY added_at with params: ('35f4bb2a-7d99-4d68-9a86-d2042e10161c',)
+2025-11-30 23:07:21 - repositories.playlist_repository - DEBUG - Retrieved 2 songs from playlist 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-30 23:07:21 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs WHERE id = ? with params: ('de0ff45c-1526-46c4-9919-d3c9c0a56496',)
+2025-11-30 23:07:21 - repositories.base_repository - INFO - READ operation on Song (ID: de0ff45c-1526-46c4-9919-d3c9c0a56496)
+2025-11-30 23:07:21 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs WHERE id = ? with params: ('1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8',)
+2025-11-30 23:07:21 - repositories.base_repository - INFO - READ operation on Song (ID: 1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8)
