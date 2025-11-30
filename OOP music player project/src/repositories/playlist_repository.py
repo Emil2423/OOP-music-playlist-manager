@@ -137,8 +137,8 @@ class PlaylistRepository(BaseRepository):
                 name=row[1],
                 owner_id=row[2]
             )
-            # Store ID for reference
-            playlist.id = row[0]
+            # Override auto-generated ID with database ID
+            playlist._Playlist__id = row[0]
             
             self._log_operation("READ", playlist_id)
             return playlist
@@ -172,7 +172,7 @@ class PlaylistRepository(BaseRepository):
                     name=row[1],
                     owner_id=row[2]
                 )
-                playlist.id = row[0]
+                playlist._Playlist__id = row[0]
                 playlists.append(playlist)
             
             logger.info(f"Retrieved {len(playlists)} playlists from database")
@@ -232,7 +232,7 @@ class PlaylistRepository(BaseRepository):
                     name=row[1],
                     owner_id=row[2]
                 )
-                playlist.id = row[0]
+                playlist._Playlist__id = row[0]
                 playlists.append(playlist)
             
             logger.debug(f"Retrieved {len(playlists)} playlists for owner: {owner_id}")
@@ -295,4 +295,146 @@ class PlaylistRepository(BaseRepository):
             
         except Exception as e:
             logger.error(f"Failed to get songs for playlist {playlist_id}: {e}")
+            raise
+    
+    def update(self, playlist):
+        """Update an existing Playlist in the database.
+        
+        Updates the playlist name for the playlist with matching ID.
+        
+        Args:
+            playlist (Playlist): Playlist instance with updated attributes
+            
+        Returns:
+            bool: True if update was successful, False if playlist not found
+            
+        Raises:
+            ValueError: If playlist is invalid or not a Playlist instance
+            sqlite3.Error: If database operation fails
+            RuntimeError: If database not connected
+            
+        Example:
+            >>> playlist = playlist_repo.read_by_id(playlist_id)
+            >>> playlist.name = "New Playlist Name"
+            >>> success = playlist_repo.update(playlist)
+        """
+        try:
+            if not isinstance(playlist, Playlist):
+                raise ValueError("Entity must be a Playlist instance")
+            
+            # Check if playlist has an ID
+            if not hasattr(playlist, 'id') or not playlist.id:
+                raise ValueError("Playlist must have an ID to update")
+            
+            # Check if playlist exists
+            if not self.exists(playlist.id):
+                logger.warning(f"Cannot update: Playlist with ID {playlist.id} not found")
+                return False
+            
+            query = """
+            UPDATE playlists 
+            SET name = ?, owner_id = ?
+            WHERE id = ?
+            """
+            
+            params = (
+                playlist.name,
+                playlist.owner_id,
+                playlist.id
+            )
+            
+            self.db.execute_update(query, params)
+            self._log_operation("UPDATE", playlist.id)
+            logger.info(f"Playlist updated: ID={playlist.id}, Name={playlist.name}")
+            return True
+            
+        except ValueError as e:
+            logger.error(f"Invalid playlist entity: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"Failed to update playlist: {e}")
+            raise
+    
+    def delete(self, playlist_id):
+        """Delete a Playlist from the database by ID.
+        
+        Permanently removes the playlist and all song associations.
+        
+        Args:
+            playlist_id (str): Unique identifier of playlist to delete
+            
+        Returns:
+            bool: True if deletion was successful, False if playlist not found
+            
+        Raises:
+            sqlite3.Error: If database operation fails
+            RuntimeError: If database not connected
+            
+        Example:
+            >>> success = playlist_repo.delete("550e8400-e29b-41d4-a716-446655440000")
+            >>> if success:
+            ...     print("Playlist deleted")
+        """
+        try:
+            # Check if playlist exists
+            if not self.exists(playlist_id):
+                logger.warning(f"Cannot delete: Playlist with ID {playlist_id} not found")
+                return False
+            
+            # First remove all song associations (junction table)
+            delete_junction = "DELETE FROM playlist_songs WHERE playlist_id = ?"
+            self.db.execute_update(delete_junction, (playlist_id,))
+            logger.debug(f"Removed all songs from playlist {playlist_id}")
+            
+            # Then delete the playlist
+            query = "DELETE FROM playlists WHERE id = ?"
+            self.db.execute_update(query, (playlist_id,))
+            
+            self._log_operation("DELETE", playlist_id)
+            logger.info(f"Playlist deleted: ID={playlist_id}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to delete playlist {playlist_id}: {e}")
+            raise
+    
+    def remove_song_from_playlist(self, playlist_id, song_id):
+        """Remove a song from a playlist (delete junction table entry).
+        
+        Args:
+            playlist_id (str): ID of playlist
+            song_id (str): ID of song to remove
+            
+        Returns:
+            bool: True if successful, False if song not in playlist
+            
+        Raises:
+            sqlite3.Error: If database operation fails
+            RuntimeError: If database not connected
+        """
+        try:
+            # Check if song is in playlist
+            check_query = """
+            SELECT COUNT(*) FROM playlist_songs 
+            WHERE playlist_id = ? AND song_id = ?
+            """
+            result = self.db.execute_query(check_query, (playlist_id, song_id))
+            
+            if result[0][0] == 0:
+                logger.warning(f"Song {song_id} not in playlist {playlist_id}")
+                return False
+            
+            query = """
+            DELETE FROM playlist_songs 
+            WHERE playlist_id = ? AND song_id = ?
+            """
+            
+            params = (playlist_id, song_id)
+            self.db.execute_update(query, params)
+            
+            logger.info(f"Song {song_id} removed from playlist {playlist_id}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to remove song {song_id} from playlist {playlist_id}: {e}")
             raise

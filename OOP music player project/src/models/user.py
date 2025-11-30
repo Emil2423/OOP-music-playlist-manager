@@ -18,5 +18,21 @@ class User:
         return self.__id
 
     @property
+    def username(self):
+        return self.__username
+    
+    @username.setter
+    def username(self, value):
+        self.__username = value
+    
+    @property
+    def email(self):
+        return self.__email
+    
+    @email.setter
+    def email(self, value):
+        self.__email = value
+
+    @property
     def playlists(self):
         return self.__playlists

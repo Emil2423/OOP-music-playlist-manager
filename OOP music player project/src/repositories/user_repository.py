@@ -76,13 +76,13 @@ class UserRepository(BaseRepository):
             
             params = (
                 user.id,
-                user._User__username,  # Access private attribute
-                user._User__email      # Access private attribute
+                user.username,  # Access via property
+                user.email      # Access via property
             )
             
             self.db.execute_update(query, params)
             self._log_operation("CREATE", user.id)
-            logger.debug(f"User created with ID: {user.id}, Username: {user._User__username}")
+            logger.debug(f"User created with ID: {user.id}, Username: {user.username}")
             return user.id
             
         except ValueError as e:
@@ -268,4 +268,96 @@ class UserRepository(BaseRepository):
             
         except Exception as e:
             logger.error(f"Failed to read user by email {email}: {e}")
+            raise
+    
+    def update(self, user):
+        """Update an existing User in the database.
+        
+        Updates username and email for the user with matching ID.
+        
+        Args:
+            user (User): User instance with updated attributes
+            
+        Returns:
+            bool: True if update was successful, False if user not found
+            
+        Raises:
+            ValueError: If user is invalid or not a User instance
+            sqlite3.Error: If database operation fails (e.g., duplicate username/email)
+            RuntimeError: If database not connected
+            
+        Example:
+            >>> user = user_repo.read_by_id(user_id)
+            >>> user.username = "new_username"
+            >>> success = user_repo.update(user)
+        """
+        try:
+            if not isinstance(user, User):
+                raise ValueError("Entity must be a User instance")
+            
+            # Check if user exists
+            if not self.exists(user.id):
+                logger.warning(f"Cannot update: User with ID {user.id} not found")
+                return False
+            
+            query = """
+            UPDATE users 
+            SET username = ?, email = ?
+            WHERE id = ?
+            """
+            
+            params = (
+                user.username,
+                user.email,
+                user.id
+            )
+            
+            self.db.execute_update(query, params)
+            self._log_operation("UPDATE", user.id)
+            logger.info(f"User updated: ID={user.id}, Username={user.username}")
+            return True
+            
+        except ValueError as e:
+            logger.error(f"Invalid user entity: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"Failed to update user: {e}")
+            raise
+    
+    def delete(self, user_id):
+        """Delete a User from the database by ID.
+        
+        Permanently removes the user. Note: This may fail if user has
+        associated playlists due to foreign key constraints.
+        
+        Args:
+            user_id (str): Unique identifier of user to delete
+            
+        Returns:
+            bool: True if deletion was successful, False if user not found
+            
+        Raises:
+            sqlite3.Error: If database operation fails
+            RuntimeError: If database not connected
+            
+        Example:
+            >>> success = user_repo.delete("550e8400-e29b-41d4-a716-446655440000")
+            >>> if success:
+            ...     print("User deleted")
+        """
+        try:
+            # Check if user exists
+            if not self.exists(user_id):
+                logger.warning(f"Cannot delete: User with ID {user_id} not found")
+                return False
+            
+            query = "DELETE FROM users WHERE id = ?"
+            self.db.execute_update(query, (user_id,))
+            
+            self._log_operation("DELETE", user_id)
+            logger.info(f"User deleted: ID={user_id}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to delete user {user_id}: {e}")
             raise

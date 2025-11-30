@@ -278,3 +278,102 @@ class SongRepository(BaseRepository):
         except Exception as e:
             logger.error(f"Failed to read songs by genre {genre}: {e}")
             raise
+    
+    def update(self, song):
+        """Update an existing Song in the database.
+        
+        Updates title, artist, genre, and duration for the song with matching ID.
+        
+        Args:
+            song (Song): Song instance with updated attributes
+            
+        Returns:
+            bool: True if update was successful, False if song not found
+            
+        Raises:
+            ValueError: If song is invalid or not a Song instance
+            sqlite3.Error: If database operation fails
+            RuntimeError: If database not connected
+            
+        Example:
+            >>> song = song_repo.read_by_id(song_id)
+            >>> # Update song attributes (using new Song or modifying existing)
+            >>> success = song_repo.update(song)
+        """
+        try:
+            if not isinstance(song, Song):
+                raise ValueError("Entity must be a Song instance")
+            
+            # Check if song exists
+            if not self.exists(song.id):
+                logger.warning(f"Cannot update: Song with ID {song.id} not found")
+                return False
+            
+            query = """
+            UPDATE songs 
+            SET title = ?, artist = ?, genre = ?, duration = ?
+            WHERE id = ?
+            """
+            
+            params = (
+                song.title,
+                song.artist,
+                song.genre,
+                song.duration,
+                song.id
+            )
+            
+            self.db.execute_update(query, params)
+            self._log_operation("UPDATE", song.id)
+            logger.info(f"Song updated: ID={song.id}, Title={song.title}")
+            return True
+            
+        except ValueError as e:
+            logger.error(f"Invalid song entity: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"Failed to update song: {e}")
+            raise
+    
+    def delete(self, song_id):
+        """Delete a Song from the database by ID.
+        
+        Permanently removes the song and its associations from playlists.
+        
+        Args:
+            song_id (str): Unique identifier of song to delete
+            
+        Returns:
+            bool: True if deletion was successful, False if song not found
+            
+        Raises:
+            sqlite3.Error: If database operation fails
+            RuntimeError: If database not connected
+            
+        Example:
+            >>> success = song_repo.delete("550e8400-e29b-41d4-a716-446655440000")
+            >>> if success:
+            ...     print("Song deleted")
+        """
+        try:
+            # Check if song exists
+            if not self.exists(song_id):
+                logger.warning(f"Cannot delete: Song with ID {song_id} not found")
+                return False
+            
+            # First remove from all playlists (junction table)
+            delete_junction = "DELETE FROM playlist_songs WHERE song_id = ?"
+            self.db.execute_update(delete_junction, (song_id,))
+            logger.debug(f"Removed song {song_id} from all playlists")
+            
+            # Then delete the song
+            query = "DELETE FROM songs WHERE id = ?"
+            self.db.execute_update(query, (song_id,))
+            
+            self._log_operation("DELETE", song_id)
+            logger.info(f"Song deleted: ID={song_id}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to delete song {song_id}: {e}")
+            raise

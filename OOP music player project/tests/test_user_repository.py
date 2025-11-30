@@ -94,8 +94,8 @@ class TestUserRepository(unittest.TestCase):
         retrieved_user = self.repo.read_by_id(user_id)
         
         self.assertIsNotNone(retrieved_user)
-        self.assertEqual(retrieved_user._User__username, "jane_doe")
-        self.assertEqual(retrieved_user._User__email, "jane@example.com")
+        self.assertEqual(retrieved_user.username, "jane_doe")
+        self.assertEqual(retrieved_user.email, "jane@example.com")
     
     def test_read_by_id_returns_none_for_nonexistent_id(self):
         """Test that read_by_id returns None for non-existent ID."""
@@ -142,8 +142,8 @@ class TestUserRepository(unittest.TestCase):
         found_user = self.repo.read_by_username("alice")
         
         self.assertIsNotNone(found_user)
-        self.assertEqual(found_user._User__username, "alice")
-        self.assertEqual(found_user._User__email, "alice@example.com")
+        self.assertEqual(found_user.username, "alice")
+        self.assertEqual(found_user.email, "alice@example.com")
     
     def test_read_by_username_returns_none_for_nonexistent_username(self):
         """Test that read_by_username returns None for unknown username."""
@@ -158,8 +158,8 @@ class TestUserRepository(unittest.TestCase):
         found_user = self.repo.read_by_email("bob@example.com")
         
         self.assertIsNotNone(found_user)
-        self.assertEqual(found_user._User__username, "bob")
-        self.assertEqual(found_user._User__email, "bob@example.com")
+        self.assertEqual(found_user.username, "bob")
+        self.assertEqual(found_user.email, "bob@example.com")
     
     def test_read_by_email_returns_none_for_nonexistent_email(self):
         """Test that read_by_email returns None for unknown email."""
@@ -184,8 +184,8 @@ class TestUserRepository(unittest.TestCase):
         user_id = self.repo.create(original)
         retrieved = self.repo.read_by_id(user_id)
         
-        self.assertEqual(retrieved._User__username, original._User__username)
-        self.assertEqual(retrieved._User__email, original._User__email)
+        self.assertEqual(retrieved.username, original.username)
+        self.assertEqual(retrieved.email, original.email)
         self.assertEqual(retrieved.id, original.id)
     
     def test_special_characters_in_username(self):
@@ -198,7 +198,7 @@ class TestUserRepository(unittest.TestCase):
         user_id = self.repo.create(user)
         retrieved = self.repo.read_by_id(user_id)
         
-        self.assertEqual(retrieved._User__username, user._User__username)
+        self.assertEqual(retrieved.username, user.username)
 
 
 if __name__ == '__main__':

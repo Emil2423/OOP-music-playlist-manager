@@ -105,6 +105,55 @@ class BaseRepository(ABC):
         pass
     
     @abstractmethod
+    def update(self, entity):
+        """Update an existing entity in the database.
+        
+        Finds the entity by ID and updates its attributes.
+        
+        Args:
+            entity: Domain model instance with updated attributes
+            
+        Returns:
+            bool: True if update was successful, False if entity not found
+            
+        Raises:
+            ValueError: If entity is invalid
+            sqlite3.Error: If database operation fails
+            
+        Implementation Note:
+            Concrete implementations should:
+            1. Validate entity attributes
+            2. Check if entity exists
+            3. Execute UPDATE query with parameterized values
+            4. Log operation and return success status
+        """
+        pass
+    
+    @abstractmethod
+    def delete(self, entity_id):
+        """Delete an entity from the database by ID.
+        
+        Permanently removes the entity and any related data.
+        
+        Args:
+            entity_id (str): Unique identifier of entity to delete
+            
+        Returns:
+            bool: True if deletion was successful, False if entity not found
+            
+        Raises:
+            sqlite3.Error: If database operation fails
+            
+        Implementation Note:
+            Concrete implementations should:
+            1. Check if entity exists
+            2. Handle cascading deletes for related data
+            3. Execute DELETE query
+            4. Log operation and return success status
+        """
+        pass
+    
+    @abstractmethod
     def exists(self, entity_id):
         """Check if an entity with the given ID exists.
         

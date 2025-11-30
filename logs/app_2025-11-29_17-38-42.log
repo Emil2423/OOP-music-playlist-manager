@@ -1,0 +1,69 @@
+2025-11-29 17:38:42 - root - INFO - Logging initialized - Log file: C:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\logs\app_2025-11-29_17-38-42.log
+2025-11-29 17:38:42 - __main__ - INFO - ============================================================
+2025-11-29 17:38:42 - __main__ - INFO - Initializing Music Playlist Manager Application
+2025-11-29 17:38:42 - __main__ - INFO - ============================================================
+2025-11-29 17:38:42 - database.connection - DEBUG - Creating new DatabaseConnection instance with db_path: C:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\music_playlist.db
+2025-11-29 17:38:42 - database.connection - INFO - Database connection established to C:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\music_playlist.db
+2025-11-29 17:38:42 - __main__ - INFO - Database connection established
+2025-11-29 17:38:42 - __main__ - INFO - Application initialization completed successfully
+2025-11-29 17:38:42 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-29 17:38:42 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-29 17:38:42 - services.user_service - DEBUG - UserService initialized
+2025-11-29 17:38:42 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-29 17:38:42 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-29 17:38:42 - services.song_service - DEBUG - SongService initialized
+2025-11-29 17:38:42 - repositories.base_repository - DEBUG - Initialized PlaylistRepository for entity: Playlist
+2025-11-29 17:38:42 - repositories.playlist_repository - DEBUG - Initialized PlaylistRepository
+2025-11-29 17:38:42 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-29 17:38:42 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-29 17:38:42 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-29 17:38:42 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-29 17:38:42 - services.playlist_service - DEBUG - PlaylistService initialized
+2025-11-29 17:38:42 - controllers.cli_controller - INFO - CLIController initialized
+2025-11-29 17:39:39 - services.user_service - DEBUG - Getting all users
+2025-11-29 17:39:39 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users ORDER BY created_at DESC with params: ()
+2025-11-29 17:39:39 - repositories.user_repository - INFO - Retrieved 2 users from database
+2025-11-29 17:42:08 - services.user_service - DEBUG - Getting all users
+2025-11-29 17:42:08 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users ORDER BY created_at DESC with params: ()
+2025-11-29 17:42:08 - repositories.user_repository - INFO - Retrieved 2 users from database
+2025-11-29 17:42:33 - services.user_service - INFO - Deleting user: ID=598c1186-f5cd-4fd5-b172-4da21b49d181
+2025-11-29 17:42:33 - services.user_service - DEBUG - Getting user by ID: 598c1186-f5cd-4fd5-b172-4da21b49d181
+2025-11-29 17:42:33 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users WHERE id = ? with params: ('598c1186-f5cd-4fd5-b172-4da21b49d181',)
+2025-11-29 17:42:33 - repositories.base_repository - INFO - READ operation on User (ID: 598c1186-f5cd-4fd5-b172-4da21b49d181)
+2025-11-29 17:42:33 - database.connection - DEBUG - Query executed: SELECT COUNT(*) FROM users WHERE id = ? with params: ('598c1186-f5cd-4fd5-b172-4da21b49d181',)
+2025-11-29 17:42:33 - repositories.user_repository - DEBUG - User with ID 598c1186-f5cd-4fd5-b172-4da21b49d181 exists
+2025-11-29 17:42:33 - database.connection - DEBUG - Update executed: DELETE FROM users WHERE id = ? with params: ('598c1186-f5cd-4fd5-b172-4da21b49d181',)
+2025-11-29 17:42:33 - repositories.base_repository - INFO - DELETE operation on User (ID: 598c1186-f5cd-4fd5-b172-4da21b49d181)
+2025-11-29 17:42:33 - repositories.user_repository - INFO - User deleted: ID=598c1186-f5cd-4fd5-b172-4da21b49d181
+2025-11-29 17:42:33 - services.user_service - INFO - User deleted successfully: ID=598c1186-f5cd-4fd5-b172-4da21b49d181
+2025-11-29 17:42:39 - services.user_service - DEBUG - Getting all users
+2025-11-29 17:42:39 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users ORDER BY created_at DESC with params: ()
+2025-11-29 17:42:39 - repositories.user_repository - INFO - Retrieved 1 users from database
+2025-11-29 17:43:09 - services.user_service - DEBUG - Getting all users
+2025-11-29 17:43:09 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users ORDER BY created_at DESC with params: ()
+2025-11-29 17:43:09 - repositories.user_repository - INFO - Retrieved 1 users from database
+2025-11-29 17:43:15 - services.user_service - INFO - Deleting user: ID=1e560801-f6e9-4dda-9b7b-d56970620cbc
+2025-11-29 17:43:15 - services.user_service - DEBUG - Getting user by ID: 1e560801-f6e9-4dda-9b7b-d56970620cbc
+2025-11-29 17:43:15 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users WHERE id = ? with params: ('1e560801-f6e9-4dda-9b7b-d56970620cbc',)
+2025-11-29 17:43:15 - repositories.base_repository - INFO - READ operation on User (ID: 1e560801-f6e9-4dda-9b7b-d56970620cbc)
+2025-11-29 17:43:15 - database.connection - DEBUG - Query executed: SELECT COUNT(*) FROM users WHERE id = ? with params: ('1e560801-f6e9-4dda-9b7b-d56970620cbc',)
+2025-11-29 17:43:15 - repositories.user_repository - DEBUG - User with ID 1e560801-f6e9-4dda-9b7b-d56970620cbc exists
+2025-11-29 17:43:15 - database.connection - DEBUG - Update executed: DELETE FROM users WHERE id = ? with params: ('1e560801-f6e9-4dda-9b7b-d56970620cbc',)
+2025-11-29 17:43:15 - repositories.base_repository - INFO - DELETE operation on User (ID: 1e560801-f6e9-4dda-9b7b-d56970620cbc)
+2025-11-29 17:43:15 - repositories.user_repository - INFO - User deleted: ID=1e560801-f6e9-4dda-9b7b-d56970620cbc
+2025-11-29 17:43:15 - services.user_service - INFO - User deleted successfully: ID=1e560801-f6e9-4dda-9b7b-d56970620cbc
+2025-11-29 17:43:46 - services.user_service - INFO - Creating user: username=emil
+2025-11-29 17:43:46 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users WHERE username = ? with params: ('emil',)
+2025-11-29 17:43:46 - repositories.user_repository - DEBUG - No user found with username: emil
+2025-11-29 17:43:46 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users WHERE email = ? with params: ('emil@gmail.com',)
+2025-11-29 17:43:46 - repositories.user_repository - DEBUG - No user found with email: emil@gmail.com
+2025-11-29 17:43:46 - database.connection - DEBUG - Update executed: 
+            INSERT INTO users (id, username, email)
+            VALUES (?, ?, ?)
+             with params: ('a0d4a09d-d171-40a9-8efb-821dd13a246c', 'emil', 'emil@gmail.com')
+2025-11-29 17:43:46 - repositories.base_repository - INFO - CREATE operation on User (ID: a0d4a09d-d171-40a9-8efb-821dd13a246c)
+2025-11-29 17:43:46 - repositories.user_repository - DEBUG - User created with ID: a0d4a09d-d171-40a9-8efb-821dd13a246c, Username: emil
+2025-11-29 17:43:46 - services.user_service - INFO - User created successfully: ID=a0d4a09d-d171-40a9-8efb-821dd13a246c
+2025-11-29 17:44:17 - services.user_service - DEBUG - Getting all users
+2025-11-29 17:44:17 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users ORDER BY created_at DESC with params: ()
+2025-11-29 17:44:17 - repositories.user_repository - INFO - Retrieved 1 users from database

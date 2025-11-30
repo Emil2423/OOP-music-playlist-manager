@@ -1,0 +1,70 @@
+2025-11-29 18:05:20 - root - INFO - Logging initialized - Log file: C:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\logs\app_2025-11-29_18-05-20.log
+2025-11-29 18:05:20 - __main__ - INFO - ============================================================
+2025-11-29 18:05:20 - __main__ - INFO - Initializing Music Playlist Manager Application
+2025-11-29 18:05:20 - __main__ - INFO - ============================================================
+2025-11-29 18:05:20 - database.connection - DEBUG - Creating new DatabaseConnection instance with db_path: c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\music_playlist.db
+2025-11-29 18:05:20 - database.connection - INFO - Database connection established to c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\music_playlist.db
+2025-11-29 18:05:20 - __main__ - INFO - Database connection established
+2025-11-29 18:05:20 - __main__ - INFO - Application initialization completed successfully
+2025-11-29 18:05:20 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-29 18:05:20 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-29 18:05:20 - services.user_service - DEBUG - UserService initialized
+2025-11-29 18:05:20 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-29 18:05:20 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-29 18:05:20 - services.song_service - DEBUG - SongService initialized
+2025-11-29 18:05:20 - repositories.base_repository - DEBUG - Initialized PlaylistRepository for entity: Playlist
+2025-11-29 18:05:20 - repositories.playlist_repository - DEBUG - Initialized PlaylistRepository
+2025-11-29 18:05:20 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-29 18:05:20 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-29 18:05:20 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-29 18:05:20 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-29 18:05:20 - services.playlist_service - DEBUG - PlaylistService initialized
+2025-11-29 18:05:20 - controllers.cli_controller - INFO - CLIController initialized
+2025-11-29 18:05:29 - services.song_service - DEBUG - Getting all songs
+2025-11-29 18:05:29 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-29 18:05:29 - repositories.song_repository - INFO - Retrieved 1 songs from database
+2025-11-29 18:06:01 - services.user_service - DEBUG - Getting all users
+2025-11-29 18:06:01 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users ORDER BY created_at DESC with params: ()
+2025-11-29 18:06:01 - repositories.user_repository - INFO - Retrieved 2 users from database
+2025-11-29 18:06:17 - services.playlist_service - INFO - Creating playlist: name=emil's playlist, owner_id=a0d4a09d-d171-40a9-8efb-821dd13a246c
+2025-11-29 18:06:17 - database.connection - DEBUG - Query executed: SELECT COUNT(*) FROM users WHERE id = ? with params: ('a0d4a09d-d171-40a9-8efb-821dd13a246c',)
+2025-11-29 18:06:17 - repositories.user_repository - DEBUG - User with ID a0d4a09d-d171-40a9-8efb-821dd13a246c exists
+2025-11-29 18:06:17 - database.connection - DEBUG - Update executed: 
+            INSERT INTO playlists (id, name, owner_id)
+            VALUES (?, ?, ?)
+             with params: ('35f4bb2a-7d99-4d68-9a86-d2042e10161c', "Emil'S Playlist", 'a0d4a09d-d171-40a9-8efb-821dd13a246c')
+2025-11-29 18:06:17 - repositories.base_repository - INFO - CREATE operation on Playlist (ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c)
+2025-11-29 18:06:17 - repositories.playlist_repository - DEBUG - Playlist created with ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c, Name: Emil'S Playlist
+2025-11-29 18:06:17 - services.playlist_service - INFO - Playlist created successfully: ID=35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-29 18:06:39 - services.playlist_service - DEBUG - Getting all playlists
+2025-11-29 18:06:39 - database.connection - DEBUG - Query executed: SELECT id, name, owner_id FROM playlists ORDER BY created_at DESC with params: ()
+2025-11-29 18:06:39 - repositories.playlist_repository - INFO - Retrieved 1 playlists from database
+2025-11-29 18:06:39 - services.song_service - DEBUG - Getting all songs
+2025-11-29 18:06:39 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-29 18:06:39 - repositories.song_repository - INFO - Retrieved 1 songs from database
+2025-11-29 18:06:48 - services.playlist_service - INFO - Adding song de0ff45c-1526-46c4-9919-d3c9c0a56496 to playlist 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-29 18:06:48 - services.playlist_service - DEBUG - Getting playlist by ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-29 18:06:48 - database.connection - DEBUG - Query executed: SELECT id, name, owner_id FROM playlists WHERE id = ? with params: ('35f4bb2a-7d99-4d68-9a86-d2042e10161c',)
+2025-11-29 18:06:48 - repositories.base_repository - INFO - READ operation on Playlist (ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c)
+2025-11-29 18:06:48 - database.connection - DEBUG - Query executed: SELECT COUNT(*) FROM songs WHERE id = ? with params: ('de0ff45c-1526-46c4-9919-d3c9c0a56496',)
+2025-11-29 18:06:48 - repositories.song_repository - DEBUG - Song with ID de0ff45c-1526-46c4-9919-d3c9c0a56496 exists
+2025-11-29 18:06:48 - database.connection - DEBUG - Update executed: 
+            INSERT INTO playlist_songs (playlist_id, song_id)
+            VALUES (?, ?)
+             with params: ('35f4bb2a-7d99-4d68-9a86-d2042e10161c', 'de0ff45c-1526-46c4-9919-d3c9c0a56496')
+2025-11-29 18:06:48 - repositories.playlist_repository - INFO - Song de0ff45c-1526-46c4-9919-d3c9c0a56496 added to playlist 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-29 18:06:48 - services.playlist_service - INFO - Song added to playlist successfully
+2025-11-29 18:07:40 - services.playlist_service - DEBUG - Getting all playlists
+2025-11-29 18:07:40 - database.connection - DEBUG - Query executed: SELECT id, name, owner_id FROM playlists ORDER BY created_at DESC with params: ()
+2025-11-29 18:07:40 - repositories.playlist_repository - INFO - Retrieved 1 playlists from database
+2025-11-29 18:07:41 - services.playlist_service - DEBUG - Getting songs for playlist: 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-29 18:07:41 - services.playlist_service - DEBUG - Getting playlist by ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-29 18:07:41 - database.connection - DEBUG - Query executed: SELECT id, name, owner_id FROM playlists WHERE id = ? with params: ('35f4bb2a-7d99-4d68-9a86-d2042e10161c',)
+2025-11-29 18:07:41 - repositories.base_repository - INFO - READ operation on Playlist (ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c)
+2025-11-29 18:07:41 - database.connection - DEBUG - Query executed: SELECT song_id FROM playlist_songs WHERE playlist_id = ? ORDER BY added_at with params: ('35f4bb2a-7d99-4d68-9a86-d2042e10161c',)
+2025-11-29 18:07:41 - repositories.playlist_repository - DEBUG - Retrieved 1 songs from playlist 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-29 18:07:41 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs WHERE id = ? with params: ('de0ff45c-1526-46c4-9919-d3c9c0a56496',)
+2025-11-29 18:07:41 - repositories.base_repository - INFO - READ operation on Song (ID: de0ff45c-1526-46c4-9919-d3c9c0a56496)
+2025-11-29 18:07:41 - services.user_service - DEBUG - Getting user by ID: a0d4a09d-d171-40a9-8efb-821dd13a246c
+2025-11-29 18:07:41 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users WHERE id = ? with params: ('a0d4a09d-d171-40a9-8efb-821dd13a246c',)
+2025-11-29 18:07:41 - repositories.base_repository - INFO - READ operation on User (ID: a0d4a09d-d171-40a9-8efb-821dd13a246c)

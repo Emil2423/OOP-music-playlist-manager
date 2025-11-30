@@ -1,0 +1,50 @@
+2025-11-30 13:24:29 - root - INFO - Logging initialized - Log file: C:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\logs\app_2025-11-30_13-24-29.log
+2025-11-30 13:24:29 - __main__ - INFO - ============================================================
+2025-11-30 13:24:29 - __main__ - INFO - Initializing Music Playlist Manager Application
+2025-11-30 13:24:29 - __main__ - INFO - ============================================================
+2025-11-30 13:24:29 - database.connection - DEBUG - Creating new DatabaseConnection instance with db_path: c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\music_playlist.db
+2025-11-30 13:24:29 - database.connection - INFO - Database connection established to c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\music_playlist.db
+2025-11-30 13:24:29 - __main__ - INFO - Database connection established
+2025-11-30 13:24:29 - __main__ - INFO - Application initialization completed successfully
+2025-11-30 13:24:29 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-30 13:24:29 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-30 13:24:29 - services.user_service - DEBUG - UserService initialized
+2025-11-30 13:24:29 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-30 13:24:29 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-30 13:24:29 - services.song_service - DEBUG - SongService initialized
+2025-11-30 13:24:29 - repositories.base_repository - DEBUG - Initialized PlaylistRepository for entity: Playlist
+2025-11-30 13:24:29 - repositories.playlist_repository - DEBUG - Initialized PlaylistRepository
+2025-11-30 13:24:29 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-30 13:24:29 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-30 13:24:29 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-30 13:24:29 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-30 13:24:29 - services.playlist_service - DEBUG - PlaylistService initialized
+2025-11-30 13:24:29 - controllers.cli_controller - INFO - CLIController initialized
+2025-11-30 13:24:36 - services.song_service - DEBUG - Getting all songs
+2025-11-30 13:24:36 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-30 13:24:36 - repositories.song_repository - INFO - Retrieved 2 songs from database
+2025-11-30 13:24:45 - services.song_service - DEBUG - Getting all songs
+2025-11-30 13:24:45 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-30 13:24:45 - repositories.song_repository - INFO - Retrieved 2 songs from database
+2025-11-30 13:24:54 - services.song_service - INFO - Deleting song: ID=7d4325d0-6378-459c-ac35-80db7c5583d9
+2025-11-30 13:24:54 - services.song_service - DEBUG - Getting song by ID: 7d4325d0-6378-459c-ac35-80db7c5583d9
+2025-11-30 13:24:54 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs WHERE id = ? with params: ('7d4325d0-6378-459c-ac35-80db7c5583d9',)
+2025-11-30 13:24:54 - repositories.base_repository - INFO - READ operation on Song (ID: 7d4325d0-6378-459c-ac35-80db7c5583d9)
+2025-11-30 13:24:54 - database.connection - DEBUG - Query executed: SELECT COUNT(*) FROM songs WHERE id = ? with params: ('7d4325d0-6378-459c-ac35-80db7c5583d9',)
+2025-11-30 13:24:54 - repositories.song_repository - DEBUG - Song with ID 7d4325d0-6378-459c-ac35-80db7c5583d9 exists
+2025-11-30 13:24:54 - database.connection - DEBUG - Update executed: DELETE FROM playlist_songs WHERE song_id = ? with params: ('7d4325d0-6378-459c-ac35-80db7c5583d9',)
+2025-11-30 13:24:54 - repositories.song_repository - DEBUG - Removed song 7d4325d0-6378-459c-ac35-80db7c5583d9 from all playlists
+2025-11-30 13:24:54 - database.connection - DEBUG - Update executed: DELETE FROM songs WHERE id = ? with params: ('7d4325d0-6378-459c-ac35-80db7c5583d9',)
+2025-11-30 13:24:54 - repositories.base_repository - INFO - DELETE operation on Song (ID: 7d4325d0-6378-459c-ac35-80db7c5583d9)
+2025-11-30 13:24:54 - repositories.song_repository - INFO - Song deleted: ID=7d4325d0-6378-459c-ac35-80db7c5583d9
+2025-11-30 13:24:54 - services.song_service - INFO - Song deleted successfully: ID=7d4325d0-6378-459c-ac35-80db7c5583d9
+2025-11-30 13:25:13 - services.song_service - INFO - Creating song: title=skyfall, artist=adele
+2025-11-30 13:25:13 - database.connection - DEBUG - Update executed: 
+            INSERT INTO songs (id, title, artist, genre, duration)
+            VALUES (?, ?, ?, ?, ?)
+             with params: ('1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8', 'Skyfall', 'Adele', 'Pop', 286)
+2025-11-30 13:25:13 - repositories.base_repository - INFO - CREATE operation on Song (ID: 1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8)
+2025-11-30 13:25:13 - repositories.song_repository - DEBUG - Song created with ID: 1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8, Title: Skyfall
+2025-11-30 13:25:13 - services.song_service - INFO - Song created successfully: ID=1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8
+2025-11-30 13:39:45 - database.connection - INFO - Database connection closed
+2025-11-30 13:39:45 - __main__ - INFO - Application shutdown completed

@@ -1,0 +1,115 @@
+2025-11-30 13:39:47 - root - INFO - Logging initialized - Log file: C:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\logs\app_2025-11-30_13-39-47.log
+2025-11-30 13:39:47 - __main__ - INFO - ============================================================
+2025-11-30 13:39:47 - __main__ - INFO - Initializing Music Playlist Manager Application
+2025-11-30 13:39:47 - __main__ - INFO - ============================================================
+2025-11-30 13:39:47 - database.connection - DEBUG - Creating new DatabaseConnection instance with db_path: c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\music_playlist.db
+2025-11-30 13:39:47 - database.connection - INFO - Database connection established to c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\music_playlist.db
+2025-11-30 13:39:47 - __main__ - INFO - Database connection established
+2025-11-30 13:39:47 - __main__ - INFO - Application initialization completed successfully
+2025-11-30 13:39:47 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-30 13:39:47 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-30 13:39:47 - services.user_service - DEBUG - UserService initialized
+2025-11-30 13:39:47 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-30 13:39:47 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-30 13:39:47 - services.song_service - DEBUG - SongService initialized
+2025-11-30 13:39:47 - repositories.base_repository - DEBUG - Initialized PlaylistRepository for entity: Playlist
+2025-11-30 13:39:47 - repositories.playlist_repository - DEBUG - Initialized PlaylistRepository
+2025-11-30 13:39:47 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-30 13:39:47 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-30 13:39:47 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-30 13:39:47 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-30 13:39:47 - services.playlist_service - DEBUG - PlaylistService initialized
+2025-11-30 13:39:47 - controllers.cli_controller - INFO - CLIController initialized
+2025-11-30 13:40:12 - controllers.cli_controller - INFO - User selected menu option: 2
+2025-11-30 13:40:12 - controllers.cli_controller - DEBUG - User viewing all songs
+2025-11-30 13:40:12 - services.song_service - DEBUG - Getting all songs
+2025-11-30 13:40:12 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-30 13:40:12 - repositories.song_repository - INFO - Retrieved 2 songs from database
+2025-11-30 13:40:46 - controllers.cli_controller - INFO - User selected menu option: 16
+2025-11-30 13:40:46 - controllers.cli_controller - INFO - User initiated adding song to playlist
+2025-11-30 13:40:46 - services.playlist_service - DEBUG - Getting all playlists
+2025-11-30 13:40:46 - database.connection - DEBUG - Query executed: SELECT id, name, owner_id FROM playlists ORDER BY created_at DESC with params: ()
+2025-11-30 13:40:46 - repositories.playlist_repository - INFO - Retrieved 1 playlists from database
+2025-11-30 13:40:46 - services.song_service - DEBUG - Getting all songs
+2025-11-30 13:40:46 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-30 13:40:46 - repositories.song_repository - INFO - Retrieved 2 songs from database
+2025-11-30 13:40:52 - services.playlist_service - INFO - Adding song de0ff45c-1526-46c4-9919-d3c9c0a56496 to playlist 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-30 13:40:52 - services.playlist_service - DEBUG - Getting playlist by ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-30 13:40:52 - database.connection - DEBUG - Query executed: SELECT id, name, owner_id FROM playlists WHERE id = ? with params: ('35f4bb2a-7d99-4d68-9a86-d2042e10161c',)
+2025-11-30 13:40:52 - repositories.base_repository - INFO - READ operation on Playlist (ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c)
+2025-11-30 13:40:52 - database.connection - DEBUG - Query executed: SELECT COUNT(*) FROM songs WHERE id = ? with params: ('de0ff45c-1526-46c4-9919-d3c9c0a56496',)
+2025-11-30 13:40:52 - repositories.song_repository - DEBUG - Song with ID de0ff45c-1526-46c4-9919-d3c9c0a56496 exists
+2025-11-30 13:40:52 - database.connection - ERROR - Update execution failed: UNIQUE constraint failed: playlist_songs.playlist_id, playlist_songs.song_id - Query: 
+            INSERT INTO playlist_songs (playlist_id, song_id)
+            VALUES (?, ?)
+            
+2025-11-30 13:40:52 - repositories.playlist_repository - ERROR - Failed to add song de0ff45c-1526-46c4-9919-d3c9c0a56496 to playlist 35f4bb2a-7d99-4d68-9a86-d2042e10161c: UNIQUE constraint failed: playlist_songs.playlist_id, playlist_songs.song_id
+2025-11-30 13:40:52 - services.playlist_service - ERROR - Failed to add song to playlist: UNIQUE constraint failed: playlist_songs.playlist_id, playlist_songs.song_id
+2025-11-30 13:40:52 - exceptions.custom_exceptions - DEBUG - DatabaseError: Database CREATE operation failed on table 'playlist_songs': UNIQUE constraint failed: playlist_songs.playlist_id, playlist_songs.song_id
+2025-11-30 13:40:52 - controllers.cli_controller - WARNING - Failed to add song to playlist: Database CREATE operation failed on table 'playlist_songs': UNIQUE constraint failed: playlist_songs.playlist_id, playlist_songs.song_id
+2025-11-30 13:41:38 - controllers.cli_controller - INFO - User selected menu option: 16
+2025-11-30 13:41:38 - controllers.cli_controller - INFO - User initiated adding song to playlist
+2025-11-30 13:41:38 - services.playlist_service - DEBUG - Getting all playlists
+2025-11-30 13:41:38 - database.connection - DEBUG - Query executed: SELECT id, name, owner_id FROM playlists ORDER BY created_at DESC with params: ()
+2025-11-30 13:41:38 - repositories.playlist_repository - INFO - Retrieved 1 playlists from database
+2025-11-30 13:41:38 - services.song_service - DEBUG - Getting all songs
+2025-11-30 13:41:38 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-30 13:41:38 - repositories.song_repository - INFO - Retrieved 2 songs from database
+2025-11-30 13:41:42 - services.playlist_service - INFO - Adding song 1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8 to playlist 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-30 13:41:42 - services.playlist_service - DEBUG - Getting playlist by ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-30 13:41:42 - database.connection - DEBUG - Query executed: SELECT id, name, owner_id FROM playlists WHERE id = ? with params: ('35f4bb2a-7d99-4d68-9a86-d2042e10161c',)
+2025-11-30 13:41:42 - repositories.base_repository - INFO - READ operation on Playlist (ID: 35f4bb2a-7d99-4d68-9a86-d2042e10161c)
+2025-11-30 13:41:42 - database.connection - DEBUG - Query executed: SELECT COUNT(*) FROM songs WHERE id = ? with params: ('1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8',)
+2025-11-30 13:41:42 - repositories.song_repository - DEBUG - Song with ID 1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8 exists
+2025-11-30 13:41:42 - database.connection - DEBUG - Update executed: 
+            INSERT INTO playlist_songs (playlist_id, song_id)
+            VALUES (?, ?)
+             with params: ('35f4bb2a-7d99-4d68-9a86-d2042e10161c', '1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8')
+2025-11-30 13:41:42 - repositories.playlist_repository - INFO - Song 1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8 added to playlist 35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-30 13:41:42 - services.playlist_service - INFO - Song added to playlist successfully
+2025-11-30 13:41:42 - controllers.cli_controller - INFO - Song added to playlist via CLI: song_id=1f17b2c2-b7cd-49a3-bc0f-a0960f2fece8, playlist_id=35f4bb2a-7d99-4d68-9a86-d2042e10161c
+2025-11-30 13:43:31 - controllers.cli_controller - INFO - User selected menu option: 19
+2025-11-30 13:43:31 - controllers.cli_controller - INFO - User initiated filter songs feature
+2025-11-30 13:43:31 - services.song_service - DEBUG - Getting all songs
+2025-11-30 13:43:31 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-30 13:43:31 - repositories.song_repository - INFO - Retrieved 2 songs from database
+2025-11-30 13:43:40 - strategies.filter_strategies - DEBUG - SongFilter initialized with None
+2025-11-30 13:43:47 - strategies.filter_strategies - DEBUG - Created FilterByTitle(contains 'sk') filter: search='sk'
+2025-11-30 13:43:47 - strategies.filter_strategies - DEBUG - SongFilter strategy changed to FilterByTitle(contains 'sk')
+2025-11-30 13:43:47 - strategies.filter_strategies - DEBUG - Title filter 'sk' matched 1/2 items
+2025-11-30 13:43:47 - controllers.cli_controller - INFO - User applied filter strategy: FilterByTitle(contains 'sk'), matched 1/2 songs
+2025-11-30 13:44:07 - controllers.cli_controller - INFO - User selected menu option: 18
+2025-11-30 13:44:07 - controllers.cli_controller - INFO - User initiated sort songs feature
+2025-11-30 13:44:07 - services.song_service - DEBUG - Getting all songs
+2025-11-30 13:44:07 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-30 13:44:07 - repositories.song_repository - INFO - Retrieved 2 songs from database
+2025-11-30 13:44:12 - strategies.sorting_strategies - DEBUG - PlaylistSorter initialized with SortByNameStrategy (ascending)
+2025-11-30 13:44:12 - strategies.sorting_strategies - DEBUG - PlaylistSorter strategy changed to SortByDurationStrategy (ascending)
+2025-11-30 13:44:12 - controllers.cli_controller - INFO - User applied sorting strategy: SortByDurationStrategy (ascending)
+2025-11-30 13:44:12 - strategies.sorting_strategies - DEBUG - Sorting 2 items by duration (SortByDurationStrategy (ascending))
+2025-11-30 13:44:22 - controllers.cli_controller - INFO - User selected menu option: 19
+2025-11-30 13:44:22 - controllers.cli_controller - INFO - User initiated filter songs feature
+2025-11-30 13:44:22 - services.song_service - DEBUG - Getting all songs
+2025-11-30 13:44:22 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-30 13:44:22 - repositories.song_repository - INFO - Retrieved 2 songs from database
+2025-11-30 13:44:27 - strategies.filter_strategies - DEBUG - SongFilter initialized with None
+2025-11-30 13:44:27 - strategies.filter_strategies - DEBUG - Created CompositeFilter with 0 filters
+2025-11-30 13:44:34 - strategies.filter_strategies - DEBUG - Created FilterByGenre('pop', contains) filter: genre='pop', exact=False
+2025-11-30 13:44:34 - strategies.filter_strategies - DEBUG - Added filter to composite: FilterByGenre('pop', contains)
+2025-11-30 13:44:43 - strategies.filter_strategies - DEBUG - SongFilter strategy changed to CompositeFilter(FilterByGenre('pop', contains))
+2025-11-30 13:44:43 - strategies.filter_strategies - DEBUG - CompositeFilter matched 2/2 items
+2025-11-30 13:44:43 - controllers.cli_controller - INFO - User applied filter strategy: CompositeFilter(FilterByGenre('pop', contains)), matched 2/2 songs
+2025-11-30 13:45:13 - controllers.cli_controller - INFO - User selected menu option: 19
+2025-11-30 13:45:13 - controllers.cli_controller - INFO - User initiated filter songs feature
+2025-11-30 13:45:13 - services.song_service - DEBUG - Getting all songs
+2025-11-30 13:45:13 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-30 13:45:13 - repositories.song_repository - INFO - Retrieved 2 songs from database
+2025-11-30 13:45:24 - controllers.cli_controller - INFO - User selected menu option: 18
+2025-11-30 13:45:24 - controllers.cli_controller - INFO - User initiated sort songs feature
+2025-11-30 13:45:24 - services.song_service - DEBUG - Getting all songs
+2025-11-30 13:45:24 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-30 13:45:24 - repositories.song_repository - INFO - Retrieved 2 songs from database
+2025-11-30 13:45:36 - strategies.sorting_strategies - DEBUG - PlaylistSorter initialized with SortByNameStrategy (ascending)
+2025-11-30 13:45:36 - strategies.sorting_strategies - DEBUG - PlaylistSorter strategy changed to SortByNameStrategy (ascending)
+2025-11-30 13:45:36 - controllers.cli_controller - INFO - User applied sorting strategy: SortByNameStrategy (ascending)
+2025-11-30 13:45:36 - strategies.sorting_strategies - DEBUG - Sorting 2 items by name (SortByNameStrategy (ascending))
