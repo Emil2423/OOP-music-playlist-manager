@@ -154,8 +154,8 @@ Enter your choice (0-19):
 
 | Option | Description |
 |--------|-------------|
-| 18. Sort Songs | Sort songs by title, artist, duration, or genre |
-| 19. Filter Songs | Filter songs by genre, artist, or duration range |
+| 18. Sort Songs | Sort songs by title, artist, duration, genre, or date added (ascending/descending) |
+| 19. Filter Songs | Filter songs by genre, artist, duration range, title substring, or combine multiple filters |
 
 ---
 
@@ -297,6 +297,9 @@ Enter new genre (current: Rock): Progressive Rock
 ### Scenario 3: Sorting and Filtering Songs
 
 **Sorting Songs:**
+
+The application provides multiple sorting options:
+
 ```
 Enter your choice: 18
 
@@ -306,19 +309,33 @@ Sort by:
   1. Title (A-Z)
   2. Title (Z-A)
   3. Artist (A-Z)
-  4. Duration (Shortest first)
-  5. Duration (Longest first)
-  6. Genre (A-Z)
-Choice: 4
+  4. Artist (Z-A)
+  5. Duration (Shortest first)
+  6. Duration (Longest first)
+  7. Genre (A-Z)
+  8. Genre (Z-A)
+  9. Date Added (Newest first)
+  10. Date Added (Oldest first)
+Choice: 5
 
 Sorted Songs (by duration, ascending):
-  1. Yesterday by Beatles (2:05)
-  2. Imagine by John Lennon (3:03)
-  3. Bohemian Rhapsody by Queen (5:54)
-  4. Hotel California by Eagles (6:30)
+  1. Yesterday by Beatles (2:05) [Pop]
+  2. Imagine by John Lennon (3:03) [Rock]
+  3. Bohemian Rhapsody by Queen (5:54) [Rock]
+  4. Hotel California by Eagles (6:30) [Rock]
 ```
 
+**Available Sorting Strategies:**
+- **By Title** - Alphabetical by song title (A-Z or Z-A)
+- **By Artist** - Alphabetical by artist name (A-Z or Z-A)
+- **By Duration** - By song length (shortest/longest first)
+- **By Genre** - Alphabetical by genre (A-Z or Z-A)
+- **By Date Added** - By creation timestamp (newest/oldest first)
+
 **Filtering Songs:**
+
+The application provides powerful filtering options:
+
 ```
 Enter your choice: 19
 
@@ -328,11 +345,51 @@ Filter by:
   1. Genre
   2. Artist
   3. Duration Range
+  4. Title Contains
+  5. Combined Filters
+Choice: 3
+
+Enter minimum duration (seconds): 180
+Enter maximum duration (seconds): 360
+
+Filtered Songs (Duration: 180-360 seconds):
+  1. Yesterday by Beatles (2:05)
+  2. Imagine by John Lennon (3:03)
+  3. Bohemian Rhapsody by Queen (5:54)
+
+Found 3 matching songs.
+```
+
+**Available Filter Strategies:**
+- **By Genre** - Filter by exact or partial genre match
+- **By Artist** - Filter by exact or partial artist name match
+- **By Duration Range** - Filter by minimum and maximum duration
+- **By Title Contains** - Filter by substring in song title
+- **Combined Filters** - Apply multiple filters simultaneously (AND logic)
+
+**Combined Filter Example:**
+```
+Enter your choice: 19
+Filter by: 5 (Combined Filters)
+
+How many filters to apply? 2
+
+Filter 1 - Select type:
+  1. Genre
+  2. Artist
+  3. Duration Range
 Choice: 1
+Enter genre: Rock
 
-Enter genre to filter: Rock
+Filter 2 - Select type:
+  1. Genre
+  2. Artist
+  3. Duration Range
+Choice: 3
+Enter minimum duration (seconds): 300
+Enter maximum duration (seconds): 400
 
-Filtered Songs (Genre: Rock):
+Filtered Songs (Rock genre AND 300-400 seconds):
   1. Bohemian Rhapsody by Queen (5:54)
   2. Hotel California by Eagles (6:30)
 ```

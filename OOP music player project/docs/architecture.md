@@ -251,12 +251,14 @@ class TrackFactory:
 
 ### 4.4 Strategy Pattern (Sprint 2 Addition)
 
-**Purpose:** Defines a family of interchangeable algorithms for formatting durations.
+**Purpose:** Defines families of interchangeable algorithms for different operations.
 
 **Implementation:**
+
+#### Duration Format Strategies
 - `DurationFormatStrategy` is the abstract base class
 - Concrete strategies: `SecondsFormat`, `MinutesFormat`, `HoursFormat`, `CompactFormat`
-- Strategies can be selected at runtime without modifying client code
+- Allows runtime selection of duration display format
 
 ```python
 # Usage example
@@ -264,6 +266,50 @@ from strategies.duration_format_strategies import DurationFormatFactory
 
 fmt = DurationFormatFactory.get_format("hours")
 formatted = fmt.format_duration(3661)  # "1h 1m 1s"
+```
+
+#### Sorting Strategies
+- `SortStrategy` is the abstract base class
+- Concrete strategies:
+  - `SortByNameStrategy` - Sort by title/name (A-Z or Z-A)
+  - `SortByArtistStrategy` - Sort by artist name
+  - `SortByDurationStrategy` - Sort by duration (shortest/longest first)
+  - `SortByGenreStrategy` - Sort by genre
+  - `SortByDateAddedStrategy` - Sort by creation date
+- All support reverse order via `reverse` parameter
+
+```python
+# Usage example
+from strategies.sorting_strategies import SortByArtistStrategy
+
+sorter = SortByArtistStrategy(reverse=False)
+sorted_songs = sorter.sort(songs)
+```
+
+#### Filter Strategies
+- `FilterStrategy` is the abstract base class
+- Concrete strategies:
+  - `FilterByGenreStrategy` - Filter by genre (exact or partial match)
+  - `FilterByArtistStrategy` - Filter by artist name
+  - `FilterByDurationRangeStrategy` - Filter by min/max duration
+  - `FilterByTitleContainsStrategy` - Filter by title substring
+  - `CompositeFilterStrategy` - Combine multiple filters with AND logic
+- Supports complex filtering scenarios through composition
+
+```python
+# Usage example
+from strategies.filter_strategies import FilterByGenreStrategy, CompositeFilterStrategy
+
+# Single filter
+rock_filter = FilterByGenreStrategy("Rock")
+rock_songs = rock_filter.filter(songs)
+
+# Combined filters
+combined = CompositeFilterStrategy([
+    FilterByGenreStrategy("Rock"),
+    FilterByDurationRangeStrategy(180, 300)
+])
+filtered = combined.filter(songs)
 ```
 
 ---
@@ -305,8 +351,19 @@ formatted = fmt.format_duration(3661)  # "1h 1m 1s"
 | `SecondsFormat` | Formats duration as total seconds (e.g., "354s") |
 | `MinutesFormat` | Formats as minutes:seconds (e.g., "5m 54s") |
 | `HoursFormat` | Formats as hours:minutes:seconds (e.g., "1h 1m 1s") |
+| `CompactFormat` | Compact duration format (e.g., "5:54") |
 | `SortStrategy` | Abstract base for sorting algorithms |
+| `SortByNameStrategy` | Sort items by title/name alphabetically |
+| `SortByArtistStrategy` | Sort songs by artist name |
+| `SortByDurationStrategy` | Sort songs by duration |
+| `SortByGenreStrategy` | Sort songs by genre |
+| `SortByDateAddedStrategy` | Sort songs by creation timestamp |
 | `FilterStrategy` | Abstract base for filtering algorithms |
+| `FilterByGenreStrategy` | Filter songs by genre (exact or partial) |
+| `FilterByArtistStrategy` | Filter songs by artist name |
+| `FilterByDurationRangeStrategy` | Filter songs by duration range (min-max) |
+| `FilterByTitleContainsStrategy` | Filter songs by title substring |
+| `CompositeFilterStrategy` | Combine multiple filters with AND logic |
 
 ---
 
