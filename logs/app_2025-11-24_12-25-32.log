@@ -1,0 +1,25 @@
+2025-11-24 12:25:32 - root - INFO - Logging initialized - Log file: logs\app_2025-11-24_12-25-32.log
+2025-11-24 12:25:32 - __main__ - INFO - ============================================================
+2025-11-24 12:25:32 - __main__ - INFO - Initializing Music Playlist Manager Application
+2025-11-24 12:25:32 - __main__ - INFO - ============================================================
+2025-11-24 12:25:32 - database.connection - DEBUG - Creating new DatabaseConnection instance with db_path: c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager-studentB-v1.1\music_playlist.db
+2025-11-24 12:25:32 - database.connection - INFO - Database connection established to c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager-studentB-v1.1\music_playlist.db
+2025-11-24 12:25:32 - __main__ - INFO - Database connection established
+2025-11-24 12:25:32 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-24 12:25:32 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-24 12:25:32 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-24 12:25:32 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-24 12:25:32 - repositories.base_repository - DEBUG - Initialized PlaylistRepository for entity: Playlist
+2025-11-24 12:25:32 - repositories.playlist_repository - DEBUG - Initialized PlaylistRepository
+2025-11-24 12:25:32 - __main__ - INFO - All repositories initialized
+2025-11-24 12:25:32 - __main__ - INFO - Application initialization completed successfully
+2025-11-24 12:25:49 - database.connection - DEBUG - Update executed: 
+            INSERT INTO users (id, username, email)
+            VALUES (?, ?, ?)
+             with params: ('598c1186-f5cd-4fd5-b172-4da21b49d181', 'huseyn\\', 'huseyn@gmail.com')
+2025-11-24 12:25:49 - repositories.base_repository - INFO - CREATE operation on User (ID: 598c1186-f5cd-4fd5-b172-4da21b49d181)
+2025-11-24 12:25:49 - repositories.user_repository - DEBUG - User created with ID: 598c1186-f5cd-4fd5-b172-4da21b49d181, Username: huseyn\
+2025-11-24 12:25:56 - database.connection - DEBUG - Query executed: SELECT id, username, email FROM users ORDER BY created_at DESC with params: ()
+2025-11-24 12:25:56 - repositories.user_repository - INFO - Retrieved 2 users from database
+2025-11-24 12:26:07 - database.connection - INFO - Database connection closed
+2025-11-24 12:26:07 - __main__ - INFO - Application shutdown completed

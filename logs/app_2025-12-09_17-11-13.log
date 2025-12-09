@@ -1,0 +1,42 @@
+2025-12-09 17:11:13 - root - INFO - Logging initialized - Log file: C:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager-sprint2-std-A-and-B\logs\app_2025-12-09_17-11-13.log
+2025-12-09 17:11:13 - __main__ - INFO - ============================================================
+2025-12-09 17:11:13 - __main__ - INFO - Initializing Music Playlist Manager Application
+2025-12-09 17:11:13 - __main__ - INFO - ============================================================
+2025-12-09 17:11:13 - database.connection - DEBUG - Creating new DatabaseConnection instance with db_path: c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager-sprint2-std-A-and-B\music_playlist.db
+2025-12-09 17:11:13 - database.connection - INFO - Database connection established to c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager-sprint2-std-A-and-B\music_playlist.db
+2025-12-09 17:11:13 - __main__ - INFO - Database connection established
+2025-12-09 17:11:13 - __main__ - INFO - Application initialization completed successfully
+2025-12-09 17:11:13 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-12-09 17:11:13 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-12-09 17:11:13 - services.user_service - DEBUG - UserService initialized
+2025-12-09 17:11:13 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-12-09 17:11:13 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-12-09 17:11:13 - services.song_service - DEBUG - SongService initialized
+2025-12-09 17:11:13 - repositories.base_repository - DEBUG - Initialized PlaylistRepository for entity: Playlist
+2025-12-09 17:11:13 - repositories.playlist_repository - DEBUG - Initialized PlaylistRepository
+2025-12-09 17:11:13 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-12-09 17:11:13 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-12-09 17:11:13 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-12-09 17:11:13 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-12-09 17:11:13 - services.playlist_service - DEBUG - PlaylistService initialized
+2025-12-09 17:11:13 - controllers.cli_controller - INFO - CLIController initialized
+2025-12-09 17:11:42 - controllers.cli_controller - INFO - User selected menu option: 1
+2025-12-09 17:11:42 - controllers.cli_controller - INFO - User initiated song creation
+2025-12-09 17:12:35 - services.song_service - INFO - Creating song: title=shape of you, artist=ed sheeran
+2025-12-09 17:12:35 - services.track_factory - INFO - TrackFactory creating song: title='Shape Of You', artist='Ed Sheeran', genre='Pop'
+2025-12-09 17:12:35 - services.track_factory - DEBUG - Song created successfully via factory: id=ff04fb30-edaa-41af-a21b-0caf1d1cb617, title='Shape Of You'
+2025-12-09 17:12:35 - database.connection - DEBUG - Update executed: 
+            INSERT INTO songs (id, title, artist, genre, duration)
+            VALUES (?, ?, ?, ?, ?)
+             with params: ('ff04fb30-edaa-41af-a21b-0caf1d1cb617', 'Shape Of You', 'Ed Sheeran', 'Pop', 233)
+2025-12-09 17:12:35 - repositories.base_repository - INFO - CREATE operation on Song (ID: ff04fb30-edaa-41af-a21b-0caf1d1cb617)
+2025-12-09 17:12:35 - repositories.song_repository - DEBUG - Song created with ID: ff04fb30-edaa-41af-a21b-0caf1d1cb617, Title: Shape Of You
+2025-12-09 17:12:35 - services.song_service - INFO - Song created successfully: ID=ff04fb30-edaa-41af-a21b-0caf1d1cb617
+2025-12-09 17:12:35 - controllers.cli_controller - INFO - Song created successfully via CLI: id=ff04fb30-edaa-41af-a21b-0caf1d1cb617, title='Shape Of You'
+2025-12-09 17:12:40 - controllers.cli_controller - INFO - User selected menu option: 2
+2025-12-09 17:12:40 - controllers.cli_controller - DEBUG - User viewing all songs
+2025-12-09 17:12:40 - services.song_service - DEBUG - Getting all songs
+2025-12-09 17:12:40 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-12-09 17:12:40 - repositories.song_repository - INFO - Retrieved 3 songs from database
+2025-12-09 17:14:20 - database.connection - INFO - Database connection closed
+2025-12-09 17:14:20 - __main__ - INFO - Application shutdown completed

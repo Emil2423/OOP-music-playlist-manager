@@ -1,0 +1,21 @@
+2025-11-24 11:47:52 - root - INFO - Logging initialized - Log file: logs\app_2025-11-24_11-47-52.log
+2025-11-24 11:47:52 - __main__ - INFO - ============================================================
+2025-11-24 11:47:52 - __main__ - INFO - Initializing Music Playlist Manager Application
+2025-11-24 11:47:52 - __main__ - INFO - ============================================================
+2025-11-24 11:47:52 - src.database.connection - DEBUG - Creating new DatabaseConnection instance with db_path: music_playlist.db
+2025-11-24 11:47:52 - src.database.connection - INFO - Database connection established to music_playlist.db
+2025-11-24 11:47:52 - __main__ - INFO - Database connection established
+2025-11-24 11:47:52 - src.database.schema - INFO - Starting database schema initialization...
+2025-11-24 11:47:52 - src.database.connection - INFO - Transaction completed successfully with 4 queries
+2025-11-24 11:47:52 - src.database.schema - INFO - Database schema initialization completed successfully
+2025-11-24 11:47:52 - __main__ - INFO - Database schema initialized
+2025-11-24 11:47:52 - src.repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-24 11:47:52 - src.repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-24 11:47:52 - src.repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-24 11:47:52 - src.repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-24 11:47:52 - src.repositories.base_repository - DEBUG - Initialized PlaylistRepository for entity: Playlist
+2025-11-24 11:47:52 - src.repositories.playlist_repository - DEBUG - Initialized PlaylistRepository
+2025-11-24 11:47:52 - __main__ - INFO - All repositories initialized
+2025-11-24 11:47:52 - __main__ - INFO - Application initialization completed successfully
+2025-11-24 11:53:47 - src.database.connection - INFO - Database connection closed
+2025-11-24 11:53:47 - __main__ - INFO - Application shutdown completed

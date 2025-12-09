@@ -1,0 +1,29 @@
+2025-11-24 12:02:09 - root - INFO - Logging initialized - Log file: logs\app_2025-11-24_12-02-09.log
+2025-11-24 12:02:09 - __main__ - INFO - ============================================================
+2025-11-24 12:02:09 - __main__ - INFO - Initializing Music Playlist Manager Application
+2025-11-24 12:02:09 - __main__ - INFO - ============================================================
+2025-11-24 12:02:09 - database.connection - DEBUG - Creating new DatabaseConnection instance with db_path: music_playlist.db
+2025-11-24 12:02:09 - database.connection - INFO - Database connection established to music_playlist.db
+2025-11-24 12:02:09 - __main__ - INFO - Database connection established
+2025-11-24 12:02:09 - database.schema - INFO - Starting database schema initialization...
+2025-11-24 12:02:09 - database.connection - INFO - Transaction completed successfully with 4 queries
+2025-11-24 12:02:09 - database.schema - INFO - Database schema initialization completed successfully
+2025-11-24 12:02:09 - __main__ - INFO - Database schema initialized
+2025-11-24 12:02:09 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-24 12:02:09 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-24 12:02:09 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-24 12:02:09 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-24 12:02:09 - repositories.base_repository - DEBUG - Initialized PlaylistRepository for entity: Playlist
+2025-11-24 12:02:09 - repositories.playlist_repository - DEBUG - Initialized PlaylistRepository
+2025-11-24 12:02:09 - __main__ - INFO - All repositories initialized
+2025-11-24 12:02:09 - __main__ - INFO - Application initialization completed successfully
+2025-11-24 12:02:41 - database.connection - DEBUG - Update executed: 
+            INSERT INTO songs (id, title, artist, genre, duration)
+            VALUES (?, ?, ?, ?, ?)
+             with params: ('1e329276-6bdf-42c4-bdfb-4f57f4589ebb', 'skyfall', 'Adele', 'pop', 300)
+2025-11-24 12:02:41 - repositories.base_repository - INFO - CREATE operation on Song (ID: 1e329276-6bdf-42c4-bdfb-4f57f4589ebb)
+2025-11-24 12:02:41 - repositories.song_repository - DEBUG - Song created with ID: 1e329276-6bdf-42c4-bdfb-4f57f4589ebb, Title: skyfall
+2025-11-24 12:02:45 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-24 12:02:45 - repositories.song_repository - INFO - Retrieved 1 songs from database
+2025-11-24 12:03:34 - database.connection - INFO - Database connection closed
+2025-11-24 12:03:34 - __main__ - INFO - Application shutdown completed

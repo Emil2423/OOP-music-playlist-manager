@@ -1,0 +1,31 @@
+2025-11-30 13:16:55 - root - INFO - Logging initialized - Log file: C:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\logs\app_2025-11-30_13-16-55.log
+2025-11-30 13:16:55 - __main__ - INFO - ============================================================
+2025-11-30 13:16:55 - __main__ - INFO - Initializing Music Playlist Manager Application
+2025-11-30 13:16:55 - __main__ - INFO - ============================================================
+2025-11-30 13:16:55 - database.connection - DEBUG - Creating new DatabaseConnection instance with db_path: c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\music_playlist.db
+2025-11-30 13:16:55 - database.connection - INFO - Database connection established to c:\Users\smart\OneDrive\Desktop\OOP-music-playlist-manager\music_playlist.db
+2025-11-30 13:16:55 - __main__ - INFO - Database connection established
+2025-11-30 13:16:55 - __main__ - INFO - Application initialization completed successfully
+2025-11-30 13:16:55 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-30 13:16:55 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-30 13:16:55 - services.user_service - DEBUG - UserService initialized
+2025-11-30 13:16:55 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-30 13:16:55 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-30 13:16:55 - services.song_service - DEBUG - SongService initialized
+2025-11-30 13:16:55 - repositories.base_repository - DEBUG - Initialized PlaylistRepository for entity: Playlist
+2025-11-30 13:16:55 - repositories.playlist_repository - DEBUG - Initialized PlaylistRepository
+2025-11-30 13:16:55 - repositories.base_repository - DEBUG - Initialized SongRepository for entity: Song
+2025-11-30 13:16:55 - repositories.song_repository - DEBUG - Initialized SongRepository
+2025-11-30 13:16:55 - repositories.base_repository - DEBUG - Initialized UserRepository for entity: User
+2025-11-30 13:16:55 - repositories.user_repository - DEBUG - Initialized UserRepository
+2025-11-30 13:16:55 - services.playlist_service - DEBUG - PlaylistService initialized
+2025-11-30 13:16:55 - controllers.cli_controller - INFO - CLIController initialized
+2025-11-30 13:16:59 - services.song_service - DEBUG - Getting all songs
+2025-11-30 13:16:59 - database.connection - DEBUG - Query executed: SELECT id, title, artist, genre, duration FROM songs ORDER BY created_at DESC with params: ()
+2025-11-30 13:16:59 - repositories.song_repository - INFO - Retrieved 1 songs from database
+2025-11-30 13:17:40 - strategies.filter_strategies - DEBUG - SongFilter initialized with None
+2025-11-30 13:17:53 - strategies.filter_strategies - DEBUG - Created FilterByDuration(400s - 500s) filter: min=400, max=500
+2025-11-30 13:17:53 - strategies.filter_strategies - DEBUG - SongFilter strategy changed to FilterByDuration(400s - 500s)
+2025-11-30 13:17:53 - strategies.filter_strategies - DEBUG - Duration filter [400-500s] matched 1/1 items
+2025-11-30 13:21:01 - database.connection - INFO - Database connection closed
+2025-11-30 13:21:01 - __main__ - INFO - Application shutdown completed
